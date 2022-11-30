@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门程序</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+
+<div id="div1" v-on:click="fun1('vue的点击事件')" style="width: 200px;height: 200px;background-color: red">
+{{info}}
+</div>
+
+
+</body>
+<script>
+    new Vue({
+        el: '#div1'
+        ,data:{
+            info:'hello world'
+        }
+        , methods:{
+            fun1(msg){
+                alert(msg)
+            }
+        }
+    })
+</script>
+</html>

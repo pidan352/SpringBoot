@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻评论</title>
+</head>
+<body>
+<table width="600" border="1" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+        <td colspan="4" align="center"><h1>
+            评论列表<input type="button" value="返回新闻列表"
+                       onclick="location.href='/listByTitle'">
+        </h1>
+        </td>
+    </tr>
+    <tr style="background-color:#E8E8E8; font-weight:bold;">
+        <td>评论编号</td>
+        <td>评论内容</td>
+        <td>评论人</td>
+        <td>评论时间</td>
+    </tr>
+    <tr th:each="comment:${commentList}">
+        <td th:text="${comment.id}"></td>
+        <td th:text="${comment.content}"></td>
+        <td th:text="${comment.author}"></td>
+        <td th:text="${#temporals.format(comment.createdate,'yyyy-MM-dd hh:mm')}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新闻评论</title>
+</head>
+<body>
+<form action="/addComment" method="post">
+    <table width="500" border="1" cellspacing="0" cellpadding="0"
+           align="center">
+        <tr>
+            <td colspan="2" bgcolor="#CCC" align="center"><h1>增加评论</h1></td>
+        </tr>
+        <tr>
+            <td>评论内容（*）</td>
+            <td><textarea name="content" id="textarea" cols="45" rows="5"></textarea></td>
+        </tr>
+        <tr>
+            <td>评论人</td>
+            <td>
+                <input type="hidden" name="newsid" th:value="${newsid}">
+                <input type="text" name="author" id="textfield">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="提交">
+                <input type="button" value="返回" onclick="location='/listByTitle'"></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

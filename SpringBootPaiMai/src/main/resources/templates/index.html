@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+</head>
+<body>
+<span th:text="${username}"></span>
+<span th:text="${session.}"></span>
+
+<table width="60%" border="1px">
+    <tr th:each="item:${itemList}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.pic}"></td>
+        <td th:text="${#dates.format(item.createtime,'yyyy-MM-dd')}"></td>
+        <td th:text="${item.detail}"></td>
+    </tr>
+</table>
+</body>
+</html>

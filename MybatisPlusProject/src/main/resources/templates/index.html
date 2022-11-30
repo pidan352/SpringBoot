@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻列表</title>
+</head>
+<body>
+<center>
+    <form action="/listByTitle" method="post">
+        新闻标题：<input name="title" type="text" th:value="${detail.title}"/> <input type="submit" value="查   询 "/>
+    </form>
+</center>
+<br>
+<table width="80%" border="1" cellspacing="0" cellpadding="0"
+       align="center">
+    <tr>
+        <td colspan="6" align="center">
+            <h1>
+                <strong>新闻列表</strong>
+            </h1>
+        </td>
+    </tr>
+    <tr style="background-color:#E8E8E8; font-weight:bold">
+        <td width="37">新闻编号</td>
+        <td>新闻标题</td>
+        <td>新闻摘要</td>
+        <td>作者</td>
+        <td>创建时间</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="news:${newsList}">
+            <td th:text="${news.id}"></td>
+            <td th:text="${news.title}"></td>
+            <td th:text="${news.summary}"></td>
+            <td th:text="${news.author}"></td>
+            <td th:text="${#temporals.format(news.createdate,'yyyy-MM-dd')}"></td>
+            <td>
+                <a th:href="@{/listComments(newsid=${news.id})}">查看评论</a>
+                <a th:href="@{/toAddComment(newsid=${news.id})}">评论 </a>
+                <a href="#" th:onclick="'delNews('+${news.id}+')'">删除</a>
+            </td>
+        </tr>
+</table>
+<script type="text/javascript">
+    function delNews(newsId) {
+        if(window.confirm("是否删除新闻以及新闻的评论数据？")){
+            window.location = "/deleteNews?newsid="+newsId;
+        }
+    }
+
+</script>
+</body>
+</html>

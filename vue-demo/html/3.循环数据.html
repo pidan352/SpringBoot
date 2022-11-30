@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门程序</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+
+<div id="div1">
+    <ul>
+        <li v-for="(item,index) in array">{{item+":"+index}}</li>
+        <li v-for="(key,val) in user">{{key+":"+val}}</li>
+    </ul>
+    {{user.username}}
+
+    <table border="1px">
+        <tr>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>地址</th>
+        </tr>
+        <tr v-for="user in userList">
+<!--            <td v-for="(val,key) in user">{{key+"-"+val}}</td>-->
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.address}}</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+<script>
+    new Vue({
+        el: '#div1'
+        , data: {
+            array: ['张三', '李四', '王五']
+            , user: {
+                username: "张三"
+                , password: "1325"
+                , address: "广州"
+            }
+            , userList: [
+                {
+                    username: "张三"
+                    , password: "1325"
+                    , address: "广州"
+                },
+                {
+                    username: "李四"
+                    , password: "1325"
+                    , address: "深圳"
+                },
+                {
+                    username: "王五"
+                    , password: "1325"
+                    , address: "杭州"
+                },
+            ]
+        }
+    })
+</script>
+</html>
